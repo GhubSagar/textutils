@@ -34,6 +34,12 @@ export default function TextForm(props) {
     setText(newText.join(" "))
      props.showAlert("Extra spaces removed!" , "success");
   }
+  const handleSpeak=() =>{
+     let msg = new SpeechSynthesisUtterance();
+    msg.text = text;
+    window.speechSynthesis.speak(msg);
+
+  }
 const [text,setText] = useState('');
   return (
     <>
@@ -47,6 +53,7 @@ const [text,setText] = useState('');
     <button className="btn btn-primary mx-1 my-1" onClick={handleClearClick}>Clear Text</button>
     <button className="btn btn-primary mx-1 my-1" onClick={handleCopy}>Copy Text</button>
     <button className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+    <button className="btn btn-primary mx-1 my-1" onClick={handleSpeak}>Speak Text</button>
     </div>
     <div className="container my-3" style={{color:props.mode==='dark'?'white':"#042743"}}>
       <h2>Your Text Summary</h2>
